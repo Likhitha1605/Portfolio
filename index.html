@@ -1,280 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>John Doe | Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Likhitha Uppala – Web Developer & AI Enthusiast</title>
   <style>
-    /* ===== RESET & BASE ===== */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
       font-family: "Poppins", sans-serif;
-      scroll-behavior: smooth;
     }
 
     body {
-      background: linear-gradient(135deg, #f3f4f7, #e1f5f9);
-      color: #333;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      overflow-x: hidden;
     }
 
     header {
-      background: linear-gradient(90deg, #00adb5, #007f87);
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 10;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
     }
 
     header h1 {
-      font-size: 2.8rem;
-      letter-spacing: 1px;
-      animation: fadeDown 1.2s ease;
+      color: #00adb5;
+      font-size: 1.5rem;
     }
 
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.3rem;
-      opacity: 0.9;
-      animation: fadeUp 1.2s ease;
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ===== NAV ===== */
     nav ul {
-      list-style: none;
       display: flex;
-      justify-content: center;
       gap: 25px;
-      margin-top: 15px;
+      list-style: none;
     }
 
     nav ul li a {
-      color: white;
+      color: #fff;
       text-decoration: none;
-      font-weight: 600;
-      position: relative;
+      font-weight: bold;
       transition: 0.3s;
     }
 
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0%;
-      height: 2px;
-      background: white;
-      transition: 0.3s;
+    nav ul li a:hover {
+      color: #00adb5;
     }
 
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    /* ===== SECTIONS ===== */
     section {
+      padding: 100px 20px;
+      text-align: center;
       max-width: 1000px;
-      margin: 80px auto;
-      padding: 40px 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-      scroll-margin-top: 150px;
+      margin: auto;
     }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    #home {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
     #home h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  background: linear-gradient(90deg, #00adb5, #007f87);
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: typing 3s steps(30, end);
-  white-space: nowrap;
-  overflow: hidden;
-  display: inline-block;
-}
- @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink {
-      from, to { border-color: transparent; }
-      50% { border-color: #00adb5; }
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
 
     #home p {
-      font-size: 1.1rem;
-      margin-top: 10px;
-      color: #555;
+      font-size: 1.2rem;
+      color: #ccc;
     }
 
-    /* ===== PROJECTS ===== */
-    .project {
-      background: #f9f9f9;
-      padding: 20px;
-      margin: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .project:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    }
-
-    .project h3 {
+    .typing {
       color: #00adb5;
-      margin-bottom: 5px;
+      font-weight: bold;
+      border-right: 3px solid #00adb5;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(25) infinite alternate;
     }
 
-    .btn {
-      background: #00adb5;
-      color: #fff;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 20px;
-      font-weight: 600;
-      transition: all 0.3s;
+    @keyframes typing {
+      0% { width: 0; }
+      50% { width: 100%; }
+      100% { width: 0; }
     }
 
-    .btn:hover {
-      background: #007f87;
-      transform: scale(1.05);
+    h2 {
+      color: #00adb5;
+      font-size: 2rem;
+      margin-bottom: 20px;
     }
 
-    /* ===== CONTACT ===== */
-    #contact p {
+    .about-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .about-content img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid #00adb5;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(0, 173, 181, 0.5);
+    }
+
+    .about-text {
+      max-width: 500px;
+      text-align: left;
       font-size: 1.1rem;
-      color: #444;
       line-height: 1.6;
     }
 
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #222;
-      color: #fff;
-      font-size: 0.9rem;
+    .skills, .projects, .education, .contact {
+      margin-top: 30px;
     }
 
-    /* ===== ANIMATION ON SCROLL ===== */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .skill-bar {
+      background: #333;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+
+    .skill-fill {
+      background: #00adb5;
+      height: 20px;
+      border-radius: 20px;
+      width: 0;
+      animation: fill 3s forwards;
+    }
+
+    @keyframes fill {
+      100% { width: var(--width); }
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      margin: 15px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .timeline {
+      border-left: 3px solid #00adb5;
+      margin: 20px auto;
+      max-width: 600px;
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .timeline div {
+      margin-bottom: 20px;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    button {
+      background: #00adb5;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #007f87;
+    }
+
+    footer {
+      background: rgba(0,0,0,0.7);
+      padding: 20px;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; background: rgba(0,0,0,0.8); padding: 10px; }
+      nav ul li { margin: 5px 0; }
+      .about-content { flex-direction: column; }
+      .about-text { text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>John Doe</h1>
-    <p>Web Developer | Designer | Freelancer</p>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <h1>Likhitha Uppala</h1>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <section id="home">
-    <h1>Welcome to My Portfolio website!!!</h1>
-    <p>I build modern, responsive websites and web applications.</p>
-  </section>
+<section id="home">
+  <h1>Hi, I'm <span class="highlight">Likhitha Uppala</span></h1>
+  <p class="typing">Web Developer | AI Enthusiast | Learner</p>
+</section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm John, a passionate front-end developer who loves creating interactive and dynamic web experiences. I focus on writing clean, efficient code and continuously improving my skills. My goal is to craft digital solutions that make people's lives easier and more beautiful.</p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Portfolio Website</h3>
-      <p>A personal website showcasing my work and skills.</p>
+<section id="about">
+  <h2>About Me</h2>
+  <div class="about-content">
+    <img src="profile.jpg" alt="Likhitha's Photo">
+    <div class="about-text">
+      <p>I'm <strong>Likhitha Uppala</strong>, a passionate Web Developer and AI Enthusiast. I love creating beautiful, responsive, and efficient websites that make an impact. My interests also include Artificial Intelligence and Machine Learning, where I enjoy exploring innovative solutions for real-world problems.</p>
     </div>
-    <div class="project">
-      <h3>Weather App</h3>
-      <p>A simple app that fetches real-time weather data using APIs.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <p>HTML</p>
+    <div class="skill-bar"><div class="skill-fill" style="--width:90%"></div></div>
+    <p>CSS</p>
+    <div class="skill-bar"><div class="skill-fill" style="--width:85%"></div></div>
+    <p>JavaScript</p>
+    <div class="skill-bar"><div class="skill-fill" style="--width:70%"></div></div>
+    <p>Python</p>
+    <div class="skill-bar"><div class="skill-fill" style="--width:75%"></div></div>
+    <p>AI & ML Basics</p>
+    <div class="skill-bar"><div class="skill-fill" style="--width:60%"></div></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="project-card">
+    <h3>Portfolio Website</h3>
+    <p>A personal website showcasing my skills, projects, and interests.</p>
+  </div>
+  <div class="project-card">
+    <h3>Weather App</h3>
+    <p>A real-time weather forecast web app using open weather API.</p>
+  </div>
+  <div class="project-card">
+    <h3>AI Chatbot</h3>
+    <p>A simple chatbot using Python and NLP techniques.</p>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="timeline">
+    <div>
+      <h3>B.Tech in Computer Science (AI & ML)</h3>
+      <p>GVP College for Women (2025 – Present)</p>
     </div>
-    <button class="btn" id="moreProjects">Show More</button>
-    <div id="extraProjects"></div>
-  </section>
+    <div>
+      <h3>Intermediate – MPC</h3>
+      <p>Narayana Junior College (2024)</p>
+    </div>
+    <div>
+      <h3>SSC</h3>
+      <p>M.S.M (E.M) SCHOOL (2022)</p>
+    </div>
+  </div>
+</section>
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Feel free to reach out for collaborations or just a friendly hello 👋</p>
-    <p>Email: johndoe@example.com</p>
-  </section>
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form action="https://formspree.io/f/movjvzdy" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
 
-  <footer>
-    <p>© 2025 John Doe | Crafted with ❤️ and pure HTML, CSS, JS.</p>
-  </footer>
+<footer>
+  <p>© 2025 Likhitha Uppala | All Rights Reserved</p>
+</footer>
 
-  <script>
-    // ====== SHOW MORE PROJECTS ======
-    document.getElementById('moreProjects').addEventListener('click', function() {
-      const extra = document.getElementById('extraProjects');
-      if (extra.innerHTML === '') {
-        extra.innerHTML = `
-          <div class="project">
-            <h3>To-Do List App</h3>
-            <p>A task manager with local storage functionality.</p>
-          </div>
-          <div class="project">
-            <h3>Blog Platform</h3>
-            <p>A basic blog system with comment functionality.</p>
-          </div>
-          <div class="project">
-            <h3>Chat UI</h3>
-            <p>A real-time styled chat interface built with JS animations.</p>
-          </div>
-        `;
-        this.textContent = 'Show Less';
-      } else {
-        extra.innerHTML = '';
-        this.textContent = 'Show More';
-      }
-    });
-
-    // ====== SCROLL REVEAL EFFECT ======
-    const sections = document.querySelectorAll("section");
-    window.addEventListener("scroll", () => {
-      sections.forEach((sec) => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          sec.classList.add("visible");
-        }
-      });
-    });
-  </script>
 </body>
 </html>
+
