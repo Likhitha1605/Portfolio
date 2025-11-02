@@ -1,317 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Likhitha Uppala – Web Developer & AI Enthusiast</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Likhitha Uppala – Passionate Web Developer & AI Enthusiast</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
+      background: linear-gradient(135deg, #0a192f, #112240);
+      color: #e6f1ff;
       overflow-x: hidden;
     }
 
     header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(8px);
-      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 1000;
+      padding: 1rem 2rem;
+      background: rgba(10, 25, 47, 0.9);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
-    header h1 {
-      color: #00adb5;
+    .logo {
       font-size: 1.5rem;
+      font-weight: bold;
+      color: #64ffda;
     }
 
     nav ul {
       display: flex;
-      gap: 25px;
       list-style: none;
+      gap: 20px;
     }
 
     nav ul li a {
-      color: #fff;
+      color: #e6f1ff;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
       transition: 0.3s;
     }
 
     nav ul li a:hover {
-      color: #00adb5;
+      color: #64ffda;
+    }
+
+    /* Hamburger menu */
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-icon div {
+      width: 25px;
+      height: 3px;
+      background: #64ffda;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(17, 34, 64, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: flex;
+      }
     }
 
     section {
-      padding: 100px 20px;
       text-align: center;
-      max-width: 1000px;
+      padding: 70px 20px;
+      max-width: 900px;
       margin: auto;
     }
 
-    #home {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
     #home h1 {
+      color: #64ffda;
       font-size: 2.5rem;
       margin-bottom: 10px;
+      animation: fadeIn 2s ease-in;
     }
 
     #home p {
       font-size: 1.2rem;
-      color: #ccc;
+      color: #ccd6f6;
     }
 
-    .typing {
-      color: #00adb5;
-      font-weight: bold;
-      border-right: 3px solid #00adb5;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      animation: typing 4s steps(25) infinite alternate;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes typing {
-      0% { width: 0; }
-      50% { width: 100%; }
-      100% { width: 0; }
-    }
-
-    h2 {
-      color: #00adb5;
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .about-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .about-content img {
+    .profile-pic {
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      border: 4px solid #00adb5;
-      object-fit: cover;
-      box-shadow: 0 0 20px rgba(0, 173, 181, 0.5);
+      border: 4px solid #64ffda;
+      margin: 20px auto;
+      display: block;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .about-text {
-      max-width: 500px;
-      text-align: left;
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    .skills, .projects, .education, .contact {
-      margin-top: 30px;
+    .profile-pic:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #64ffda;
     }
 
     .skill-bar {
-      background: #333;
-      border-radius: 20px;
-      overflow: hidden;
-      margin: 10px 0;
-    }
-
-    .skill-fill {
-      background: #00adb5;
-      height: 20px;
-      border-radius: 20px;
-      width: 0;
-      animation: fill 3s forwards;
-    }
-
-    @keyframes fill {
-      100% { width: var(--width); }
-    }
-
-    .project-card {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      margin: 15px;
+      background: #233554;
       border-radius: 10px;
-      transition: 0.3s;
+      overflow: hidden;
+      margin: 15px 0;
     }
 
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    .skill-bar div {
+      height: 12px;
+      background: #64ffda;
+      width: 0;
+      border-radius: 10px;
+      animation: grow 2s forwards;
     }
 
-    .timeline {
-      border-left: 3px solid #00adb5;
-      margin: 20px auto;
-      max-width: 600px;
-      padding-left: 20px;
-      text-align: left;
-    }
-
-    .timeline div {
-      margin-bottom: 20px;
-    }
-
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 400px;
-      margin: auto;
-    }
-
-    input, textarea {
-      padding: 10px;
-      border-radius: 6px;
-      border: none;
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-    }
-
-    button {
-      background: #00adb5;
-      color: #fff;
-      border: none;
-      padding: 10px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #007f87;
+    @keyframes grow {
+      from { width: 0; }
     }
 
     footer {
-      background: rgba(0,0,0,0.7);
-      padding: 20px;
       text-align: center;
-      margin-top: 30px;
+      padding: 20px;
+      color: #8892b0;
+      border-top: 1px solid #233554;
     }
 
-    @media (max-width: 768px) {
-      nav ul { flex-direction: column; background: rgba(0,0,0,0.8); padding: 10px; }
-      nav ul li { margin: 5px 0; }
-      .about-content { flex-direction: column; }
-      .about-text { text-align: center; }
+    .typing {
+      border-right: 2px solid #64ffda;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(30, end), blink 0.6s step-end 6 alternate;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Likhitha Uppala</h1>
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-<section id="home">
-  <h1>Hi, I'm <span class="highlight">Likhitha Uppala</span></h1>
-  <p class="typing">Web Developer | AI Enthusiast | Learner</p>
-</section>
-
-<section id="about">
-  <h2>About Me</h2>
-  <div class="about-content">
-    <img src="profile.jpg" alt="Likhitha's Photo">
-    <div class="about-text">
-      <p>I'm <strong>Likhitha Uppala</strong>, a passionate Web Developer and AI Enthusiast. I love creating beautiful, responsive, and efficient websites that make an impact. My interests also include Artificial Intelligence and Machine Learning, where I enjoy exploring innovative solutions for real-world problems.</p>
+  <header>
+    <div class="logo">Likhitha Uppala</div>
+    <div class="menu-icon" id="menuToggle">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-  </div>
-</section>
+    <nav>
+      <ul id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills">
-    <p>HTML</p>
-    <div class="skill-bar"><div class="skill-fill" style="--width:90%"></div></div>
-    <p>CSS</p>
-    <div class="skill-bar"><div class="skill-fill" style="--width:85%"></div></div>
-    <p>JavaScript</p>
-    <div class="skill-bar"><div class="skill-fill" style="--width:70%"></div></div>
-    <p>Python</p>
-    <div class="skill-bar"><div class="skill-fill" style="--width:75%"></div></div>
-    <p>AI & ML Basics</p>
-    <div class="skill-bar"><div class="skill-fill" style="--width:60%"></div></div>
-  </div>
-</section>
+  <section id="home">
+    <h1 class="typing">Welcome to My Portfolio</h1>
+    <img src="profile.jpg" alt="Likhitha's Photo" class="profile-pic">
+    <p>Hi, I'm <strong>Likhitha Uppala</strong> – a passionate Web Developer and AI Enthusiast who loves building interactive, modern web experiences.</p>
+  </section>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="project-card">
-    <h3>Portfolio Website</h3>
-    <p>A personal website showcasing my skills, projects, and interests.</p>
-  </div>
-  <div class="project-card">
-    <h3>Weather App</h3>
-    <p>A real-time weather forecast web app using open weather API.</p>
-  </div>
-  <div class="project-card">
-    <h3>AI Chatbot</h3>
-    <p>A simple chatbot using Python and NLP techniques.</p>
-  </div>
-</section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a Computer Science student specializing in AI & ML, with a strong interest in building intelligent web solutions. I enjoy problem-solving, designing creative interfaces, and learning emerging technologies.</p>
+  </section>
 
-<section id="education">
-  <h2>Education</h2>
-  <div class="timeline">
-    <div>
-      <h3>B.Tech in Computer Science (AI & ML)</h3>
-      <p>GVP College for Women (2025 – Present)</p>
-    </div>
-    <div>
-      <h3>Intermediate – MPC</h3>
-      <p>Narayana Junior College (2024)</p>
-    </div>
-    <div>
-      <h3>SSC</h3>
-      <p>M.S.M (E.M) SCHOOL (2022)</p>
-    </div>
-  </div>
-</section>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skill-bar"><div style="width: 95%;"></div></div><p>HTML</p>
+    <div class="skill-bar"><div style="width: 90%;"></div></div><p>CSS</p>
+    <div class="skill-bar"><div style="width: 80%;"></div></div><p>JavaScript</p>
+    <div class="skill-bar"><div style="width: 85%;"></div></div><p>Python</p>
+    <div class="skill-bar"><div style="width: 70%;"></div></div><p>AI & ML Basics</p>
+  </section>
 
-<section id="contact">
-  <h2>Contact Me</h2>
-  <form action="https://formspree.io/f/movjvzdy" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <p><strong>Weather App:</strong> A real-time weather checking app using OpenWeather API.</p>
+    <p><strong>AI Chatbot:</strong> A simple interactive chatbot using Python NLP libraries.</p>
+  </section>
 
-<footer>
-  <p>© 2025 Likhitha Uppala | All Rights Reserved</p>
-</footer>
+  <section id="education">
+    <h2>Education</h2>
+    <p>B.Tech in Computer Science & Engineering (AI & ML) – GVP College for Women</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:likhitha@example.com" style="color:#64ffda;">likhitha@example.com</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Likhitha Uppala | Designed with 💖 using HTML, CSS & JS</p>
+  </footer>
+
+  <script>
+    // Hamburger toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('show');
+    });
+  </script>
 
 </body>
 </html>
-
